@@ -1,9 +1,6 @@
 using System;
 using Jurassic.Models;
 
-
-
-
 public class Program
 {
   public static void Main()
