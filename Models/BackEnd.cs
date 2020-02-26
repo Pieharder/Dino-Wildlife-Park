@@ -1,40 +1,46 @@
 using System;
-using Jurassic;
+using System.Collections.Generic;
 
 namespace Jurassic.Models
 {
   public class Dino
   {
-    private string _type;
+    public static Dictionary<string, Dino> dinoGroup = new Dictionary<string, Dino>();
+
+    public void addDino(string species, string color, string diet, string name)
+    {
+      dinoGroup[name] = new Dino(species, color, diet);
+    }
+    private string _species;
     private string _color;
     private string _diet;
     private string _name;
 
-    public void AddDino()
+    public Dino(string species, string color, string diet, string name)
     {
-      Console.WriteLine("Add View");
-      string addView = Console.ReadLine();
-      if (addView == "Add")
-      {
-        Console.WriteLine("Please enter a Dinosaur species");
-        _type = Console.ReadLine();
-        Console.WriteLine("Please enter a Dinosaur color");
-        _color = Console.ReadLine();
-        Console.WriteLine("Please enter a Dinosaur diet");
-        _diet = Console.ReadLine();
-        Console.WriteLine("Please give the dino a name");
-        _name = Console.ReadLine();
-        Console.WriteLine("Dinosaur Added!");
-      }
-      else if (addView == "View")
-      {
-        Dinosaurs.ForEach(Console.WriteLine);
-      }
-
+      _species = species;
+      _color = color;
+      _diet = diet;
+      _name = name;
     }
-    public void GetDino()
+    public string GetSpecies()
     {
-      Console.WriteLine(_type, _color, _diet, _name);
+      return _species;
+    }
+
+    public string GetColor()
+    {
+      return _color;
+    }
+
+    public string GetDiet()
+    {
+      return _diet;
+    }
+
+    public string GetName()
+    {
+      return _name;
     }
   }
 }
